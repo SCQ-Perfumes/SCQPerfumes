@@ -1,0 +1,1400 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>S C Q | P E R F U M E S — Alta Perfumería & Fragancias</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy: #0b0b0b;
+    --navy-card: #141414;
+    --navy-card-2: #1f1f1f;
+    --gold: #d4af37;
+    --gold-soft: #e9cd6f;
+    --blue-light: #d4af37;
+    --white: #ffffff;
+    --alert: #e63946;
+    --line: rgba(212,175,55,0.25);
+  }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    background: var(--navy);
+    color: var(--white);
+    font-family:'Montserrat', sans-serif;
+    font-weight:400;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,h4,.brand{ font-family:'Poppins', sans-serif; }
+  a{ text-decoration:none; color:inherit; }
+  ul{ list-style:none; }
+  img{ max-width:100%; display:block; }
+  .container{ max-width:1180px; margin:0 auto; padding:0 24px; }
+  ::selection{ background:var(--gold); color:var(--navy); }
+
+  /* ---------- Scrollbar ---------- */
+  ::-webkit-scrollbar{ width:10px; }
+  ::-webkit-scrollbar-track{ background:var(--navy); }
+  ::-webkit-scrollbar-thumb{ background:var(--navy-card-2); border-radius:10px; }
+
+  /* ---------- Navbar ---------- */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:1000;
+    background:rgba(11,11,11,0.90);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line);
+    transition:padding .3s ease;
+  }
+  nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 24px; max-width:1180px; margin:0 auto;
+  }
+  .logo-group{ display:flex; align-items:center; gap:10px; }
+  .logo-text{ font-size:1.4rem; font-weight:700; letter-spacing:1px; color: var(--gold); }
+  .tagline-mini{
+    font-size:0.62rem; letter-spacing:1.5px; text-transform:uppercase;
+    color:rgba(255,255,255,0.55); margin-top:-2px; font-family:'Montserrat';
+  }
+  .nav-links{ display:flex; gap:36px; align-items:center; }
+  .nav-links a{
+    font-size:0.92rem; font-weight:500; color:rgba(255,255,255,0.85);
+    position:relative; padding:6px 0; transition:color .25s;
+  }
+  .nav-links a::after{
+    content:''; position:absolute; left:0; bottom:0; width:0; height:2px;
+    background:var(--gold); transition:width .3s ease;
+  }
+  .nav-links a:hover{ color:var(--gold-soft); }
+  .nav-links a:hover::after{ width:100%; }
+  .nav-cta{
+    background:linear-gradient(135deg, var(--gold), #b8912b);
+    color:var(--navy) !important; padding:10px 22px; border-radius:30px;
+    font-weight:600; font-size:0.88rem !important;
+  }
+  .nav-cta::after{ display:none; }
+  .burger{ display:none; flex-direction:column; gap:5px; cursor:pointer; z-index:1200; }
+  .burger span{ width:26px; height:2px; background:var(--gold); transition:.3s; }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    min-height:100vh;
+    display:flex; align-items:center;
+    position:relative;
+    padding-top:100px;
+    background:
+      radial-gradient(ellipse 900px 500px at 85% 15%, rgba(212,175,55,0.12), transparent 60%),
+      radial-gradient(ellipse 700px 600px at 10% 90%, rgba(20,20,20,0.8), transparent 60%),
+      var(--navy);
+    overflow:hidden;
+  }
+  .hero-grid{
+    display:grid; grid-template-columns:1.1fr 0.9fr; gap:60px; align-items:center;
+    width:100%;
+  }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:10px;
+    color:var(--gold); font-size:0.78rem; letter-spacing:2.5px; text-transform:uppercase;
+    font-weight:600; margin-bottom:22px;
+  }
+  .eyebrow::before{ content:''; width:32px; height:1px; background:var(--gold); }
+  .hero h1{
+    font-size:clamp(2.2rem, 4.5vw, 3.4rem);
+    font-weight:700; line-height:1.2; margin-bottom:22px;
+  }
+  .hero h1 .accent{ color:var(--gold); }
+  .hero p.sub{
+    font-size:1.1rem; color:rgba(255,255,255,0.85); max-width:520px; margin-bottom:36px;
+    font-weight:300; font-style: italic;
+  }
+  .hero-ctas{ display:flex; gap:14px; flex-wrap:wrap; }
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    padding:14px 28px; border-radius:6px; font-weight:600; font-size:0.92rem;
+    cursor:pointer; border:none; transition:transform .25s ease, box-shadow .25s ease;
+    font-family:'Poppins', sans-serif;
+  }
+  .btn-primary{
+    background:linear-gradient(135deg, var(--gold-soft), var(--gold));
+    color:var(--navy);
+    box-shadow:0 8px 24px rgba(212,175,55,0.25);
+  }
+  .btn-primary:hover{ transform:translateY(-3px); box-shadow:0 14px 30px rgba(212,175,55,0.4); }
+  .btn-outline{
+    background:transparent; border:1px solid rgba(212,175,55,0.5); color:var(--gold-soft);
+  }
+  .btn-outline:hover{ background:rgba(212,175,55,0.1); transform:translateY(-3px); }
+  .btn-instagram{
+    background:linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    color: #fff;
+    box-shadow:0 8px 20px rgba(220,39,67,0.3);
+  }
+  .btn-instagram:hover{ transform:translateY(-3px); box-shadow:0 12px 25px rgba(220,39,67,0.45); }
+
+  /* Visual del Hero */
+  .hero-visual{
+    position:relative; display:flex; justify-content:center; align-items:center;
+  }
+  .logo-circle-container{
+    width:340px; height:340px;
+    border-radius:50%;
+    overflow:hidden;
+    box-shadow: 0 0 40px rgba(212,175,55,0.25);
+    border: 2px solid var(--gold);
+    background: var(--navy);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .logo-circle-container img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  /* ---------- Search Box & Categories ---------- */
+  .search-container {
+    max-width: 500px;
+    margin: 30px auto 20px;
+    position: relative;
+  }
+  .search-box {
+    width: 100%;
+    padding: 14px 20px 14px 48px;
+    background: var(--navy-card);
+    border: 1px solid var(--line);
+    border-radius: 30px;
+    color: #fff;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.3s;
+  }
+  .search-box:focus {
+    border-color: var(--gold);
+  }
+  .search-icon {
+    position: absolute;
+    left: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    color: var(--gold);
+  }
+
+  .category-filter {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+  }
+  .cat-btn {
+    background: var(--navy-card);
+    border: 1px solid var(--line);
+    color: rgba(255,255,255,0.8);
+    padding: 8px 18px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s ease;
+  }
+  .cat-btn.active, .cat-btn:hover {
+    background: var(--gold);
+    color: var(--navy);
+    font-weight: 600;
+  }
+
+  .category-title {
+    font-size: 1.6rem;
+    color: var(--gold);
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 8px;
+    margin: 40px 0 24px;
+    font-weight: 600;
+  }
+
+  /* ---------- Section generic ---------- */
+  section{ padding:110px 0; position:relative; }
+  .section-head{ text-align:center; max-width:640px; margin:0 auto 40px; }
+  .section-head .eyebrow{ justify-content:center; }
+  .section-head .eyebrow::before{ display:none; }
+  .section-head h2{
+    font-size:clamp(1.9rem, 4vw, 2.6rem); font-weight:700; margin-bottom:16px;
+  }
+  .section-head h2 .accent{ color:var(--gold); }
+  .section-head p{ color:rgba(255,255,255,0.65); font-weight:300; font-size:1.02rem; }
+
+  /* ---------- Catalog ---------- */
+  .catalog{ background:linear-gradient(180deg, var(--navy), #111111); }
+  .catalog-grid{
+    display:grid; grid-template-columns:repeat(4, 1fr); gap:26px;
+  }
+  .product-card{
+    background:var(--navy-card);
+    border:1px solid var(--line); border-radius:16px; overflow:hidden;
+    display:flex; flex-direction:column;
+    transition:transform .35s ease, box-shadow .35s ease;
+  }
+  .product-card:hover{ transform:translateY(-10px); box-shadow:0 20px 40px rgba(0,0,0,0.5); }
+  .product-media{
+    height:200px; position:relative;
+    background:linear-gradient(150deg, var(--navy-card-2), #0d0d0d);
+    display:flex; align-items:center; justify-content:center;
+    border-bottom:1px solid var(--line);
+    overflow:hidden;
+  }
+  .product-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .4s ease;
+  }
+  .product-card:hover .product-media img {
+    transform: scale(1.08);
+  }
+  .product-tag{
+    position:absolute; top:14px; left:14px; background:var(--gold);
+    color:var(--navy); font-size:0.7rem; letter-spacing:1px; text-transform:uppercase;
+    padding:5px 12px; border-radius:20px; font-weight:800; z-index:2;
+  }
+  .product-tag.out-of-stock{
+    background:#555; color:#fff;
+  }
+  .product-tag.last-units{
+    background:var(--alert); color:#fff;
+  }
+  .product-body{ padding:20px; display:flex; flex-direction:column; flex:1; gap:10px; }
+  .product-body h3{ font-size:1.05rem; font-weight:600; line-height: 1.3; }
+  .product-body p{ font-size:0.82rem; color:rgba(255,255,255,0.6); font-weight:300; flex:1; }
+
+  /* ---------- Precios ---------- */
+  .price-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    flex-wrap: wrap;
+  }
+  .price-current {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--gold);
+  }
+
+  .btn-whatsapp{
+    display:flex; align-items:center; justify-content:center; gap:10px;
+    background:linear-gradient(135deg, #25D366, #1ebc59);
+    color:#fff; padding:12px; border-radius:8px; font-weight:600; font-size:0.88rem;
+    font-family:'Poppins'; transition:transform .25s ease, box-shadow .25s ease; border:none; cursor:pointer;
+    margin-top:auto;
+  }
+  .btn-whatsapp.disabled {
+    background: #333;
+    color: #777;
+    cursor: not-allowed;
+  }
+  .btn-whatsapp:not(.disabled):hover{ transform:translateY(-2px); box-shadow:0 10px 24px rgba(37,211,102,0.35); }
+
+  /* ---------- Shipping/Payment ---------- */
+  .shipping{ background:var(--navy); }
+  .ship-grid{ display:grid; grid-template-columns:1fr 1fr; gap:26px; }
+  .info-card{
+    background:linear-gradient(160deg, var(--navy-card), var(--navy-card-2));
+    border:1px solid var(--line); border-radius:16px; padding:40px;
+  }
+  .info-card h3{
+    font-size:1.3rem; margin-bottom:24px; display:flex; align-items:center; gap:12px;
+    color:var(--gold-soft);
+  }
+  .info-card ul li{
+    display:flex; align-items:center; gap:12px; padding:12px 0;
+    border-bottom:1px solid rgba(255,255,255,0.06); font-size:0.95rem; font-weight:300;
+  }
+  .info-card ul li:last-child{ border-bottom:none; }
+  .info-card ul li .chip{
+    color:var(--gold); font-size:1rem; flex-shrink:0;
+  }
+
+  /* ---------- Footer ---------- */
+  footer{ background:#050505; padding:70px 0 30px; border-top:1px solid var(--line); }
+  .footer-grid{
+    display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:50px; margin-bottom:50px;
+  }
+  .footer-brand p{ color:rgba(255,255,255,0.55); font-size:0.9rem; margin-top:16px; max-width:280px; font-weight:300; }
+  .footer-col h4{ font-size:0.95rem; margin-bottom:20px; color:var(--gold-soft); }
+  .footer-col ul li{ margin-bottom:12px; }
+  .footer-col ul li a{ color:rgba(255,255,255,0.6); font-size:0.9rem; transition:color .25s; }
+  .footer-col ul li a:hover{ color:var(--gold); }
+  .social-row{ display:flex; gap:14px; margin-top:20px; }
+  .social-btn{
+    width:44px; height:44px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    background:var(--navy-card); border:1px solid var(--line); transition:transform .25s ease, background .25s ease;
+  }
+  .social-btn svg{ width:20px; height:20px; }
+  .social-btn:hover{ transform:translateY(-4px); background:var(--gold); color:var(--navy); }
+  .footer-bottom{
+    border-top:1px solid rgba(255,255,255,0.08); padding-top:26px; display:flex;
+    justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;
+    font-size:0.82rem; color:rgba(255,255,255,0.45);
+  }
+
+  /* ---------- Floating WhatsApp ---------- */
+  .float-whatsapp{
+    position:fixed; bottom:26px; right:26px; z-index:900;
+    width:62px; height:62px; border-radius:50%;
+    background:linear-gradient(135deg, #25D366, #1ebc59);
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 10px 30px rgba(37,211,102,0.45);
+    transition:transform .3s ease;
+  }
+  .float-whatsapp:hover{ transform:scale(1.1); }
+  .float-whatsapp svg{ width:30px; height:30px; fill:#fff; }
+
+  /* ---------- Responsive ---------- */
+  @media(max-width:1024px){
+    .catalog-grid{ grid-template-columns:repeat(2,1fr); }
+    .hero-grid{ grid-template-columns:1fr; text-align:center; }
+    .hero p.sub{ margin-left:auto; margin-right:auto; }
+    .hero-ctas{ justify-content:center; }
+    .eyebrow{ justify-content:center; }
+    .hero-visual{ margin-top:40px; }
+  }
+  @media(max-width:768px){
+    .nav-links{
+      position:fixed; top:0; right:-100%; height:100vh; width:min(300px,80vw);
+      background:var(--navy-card); flex-direction:column; justify-content:center;
+      gap:30px; transition:right .4s ease; border-left:1px solid var(--line);
+    }
+    .nav-links.open{ right:0; }
+    .burger{ display:flex; }
+    .ship-grid{ grid-template-columns:1fr; }
+    .footer-grid{ grid-template-columns:1fr; gap:36px; }
+  }
+
+  /* Ajuste para celulares: Catálogo de 2 en 2 */
+  @media(max-width:600px){
+    .catalog-grid{ grid-template-columns: repeat(2, 1fr) !important; gap:12px; }
+    .product-body{ padding:12px; }
+    .product-body h3{ font-size:0.9rem; }
+    .product-body p{ font-size:0.72rem; }
+    .price-current{ font-size:1rem; }
+    .btn-whatsapp{ padding:8px; font-size:0.75rem; }
+    section{ padding:60px 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header>
+  <nav>
+    <a href="#inicio" class="logo-group">
+      <div>
+        <div class="logo-text">S C Q | P E R F U M E S</div>
+        <div class="tagline-mini">Fragancias Importadas & Exclusivas</div>
+      </div>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#productos">Perfumes</a></li>
+      <li><a href="#envios">Envíos y Pagos</a></li>
+      <li><a href="#contacto" class="nav-cta">Contacto</a></li>
+    </ul>
+    <div class="burger" id="burger"><span></span><span></span><span></span></div>
+  </nav>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="inicio">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <div class="eyebrow">Alta Perfumería · Elegancia · Exclusividad</div>
+      <h1>S C Q | P E R F U M E S</h1>
+      <p class="sub">“El aroma es lo primero que se siente y lo último que se olvida.”</p>
+      
+      <div class="hero-ctas">
+        <a href="#productos" class="btn btn-primary">Ver Catálogo</a>
+        <a href="https://wa.me/5493564379904?text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20perfumes" target="_blank" class="btn btn-outline">WhatsApp</a>
+        <a href="https://www.instagram.com/scq.perfumes/?hl=es" target="_blank" class="btn btn-instagram">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+          Instagram
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="logo-circle-container">
+        <img src="logo.png" alt="SCQ Perfumes Logo">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CATÁLOGO ============ -->
+<section class="catalog" id="productos">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Catálogo Exclusivo</div>
+      <h2>Descubrí tu <span class="accent">fragancia ideal</span></h2>
+      <p>Buscá tu perfume favorito y consultanos disponibilidad por WhatsApp.</p>
+
+      <!-- Buscador con Lupa -->
+      <div class="search-container">
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="searchInput" class="search-box" placeholder="Buscar perfume por nombre...">
+      </div>
+
+      <!-- Filtro por Categorías -->
+      <div class="category-filter">
+        <button class="cat-btn active" onclick="filterCategory('all')">Todos</button>
+        <button class="cat-btn" onclick="filterCategory('afnan')">Afnan</button>
+        <button class="cat-btn" onclick="filterCategory('armaf')">Armaf</button>
+        <button class="cat-btn" onclick="filterCategory('lattafa')">Lattafa</button>
+        <button class="cat-btn" onclick="filterCategory('xerjoff')">Xerjoff</button>
+        <button class="cat-btn" onclick="filterCategory('varios')">Árabes Varios</button>
+        <button class="cat-btn" onclick="filterCategory('body-splash')">Body Splash</button>
+      </div>
+    </div>
+
+    <div id="catalogContent">
+
+      <!-- ==================== AFNAN ==================== -->
+      <div class="category-section" data-category="afnan">
+        <h3 class="category-title">Árabes Línea Afnan</h3>
+        <div class="catalog-grid">
+          
+          <div class="product-card" data-name="9am dive afnan 100 ml">
+            <div class="product-media">
+              <img src="Arabes Linea Afnan/9AM Dive - Afnan (100 ml).webp" alt="9AM Dive - Afnan" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3>9AM Dive - Afnan</h3>
+              <p>100 ml</p>
+              <div class="price-container"><span class="price-current">$28.990,00</span></div>
+              <a class="btn-whatsapp" target="_blank" href="https://wa.me/5493564379904?text=Hola%2C%20estoy%20interesado%20en%209AM%20Dive%20-%20Afnan">Comprar</a>
+            </div>
+          </div>
+
+          <div class="product-card" data-name="9pm negro afnan 100 ml">
+            <div class="product-media">
+              <img src="Arabes Linea Afnan/9PM (Negro) - Afnan (100 ml).webp" alt="9PM (Negro) - Afnan" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3>9PM (Negro) - Afnan</h3>
+              <p>100 ml</p>
+              <div class="price-container"><span class="price-current">$28.990,00</span></div>
+              <a class="btn-whatsapp" target="_blank" href="https://wa.me/5493564379904?text=Hola%2C%20estoy%20interesado%20en%209PM%20(Negro)%20-%20Afnan">Comprar</a>
+            </div>
+          </div>
+
+          <div class="product-card" data-name="9pm elixir afnan 100 ml">
+            <div class="product-media">
+              <img src="Arabes Linea Afnan/9PM Elixir - Afnan (100 ml).webp" alt="9PM Elixir - Afnan" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3>9PM Elixir - Afnan</h3>
+              <p>100 ml</p>
+              <div class="price-container"><span class="price-current">$28.990,00</span></div>
+              <a class="btn-whatsapp" target="_blank" href="https://wa.me/5493564379904?text=Hola%2C%20estoy%20interesado%20en%209PM%20Elixir%20-%20Afnan">Comprar</a>
+            </div>
+          </div>
+
+          <div class="product-card" data-name="9pm rebel rojo afnan 100 ml">
+            <div class="product-media">
+              <img src="Arabes Linea Afnan/9PM Rebel (Rojo) - Afnan (100 ml).webp" alt="9PM Rebel (Rojo) - Afnan" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3>9PM Rebel (Rojo) - Afnan</h3>
+              <p>100 ml</p>
+              <div class="price-container"><span class="price-current">$28.990,00</span></div>
+              <a class="btn-whatsapp" target="_blank" href="https://wa.me/5493564379904?text=Hola%2C%20estoy%20interesado%20en%209PM%20Rebel%20(Rojo)%20-%20Afnan">Comprar</a>
+            </div>
+          </div>
+
+          <div class="product-card" data-name="night out 9pm afnan 100 ml">
+            <div class="product-media">
+              <img src="Arabes Linea Afnan/Night Out - 9PM (100 ml).webp" alt="Night Out - 9PM" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3>Night Out - 9PM</h3>
+              <p>100 ml</p>
+              <div class="price-container"><span class="price-current">$34.990,00</span></div>
+              <a class="btn-whatsapp" target="_blank" href="https://wa.me/5493564379904?text=Hola%2C%20estoy%20interesado%20en%20Night%20Out%20-%209PM">Comprar</a>
+            </div>
+          </div>
+
+          <div class="product-card" data-name="supremacy in heaven afnan 100 ml">
+            <div class="product-media">
+              <img src="Arabes Linea Afnan/Supremacy In Heaven - Afnan (100 ml).webp" alt="Supremacy In Heaven - Afnan" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3>Supremacy In Heaven - Afnan</h3>
+              <p>100 ml</p>
+              <div class="price-container"><span class="price-current">$29.990,00</span></div>
+              <a class="btn-whatsapp" target="_blank" href="https://wa.me/5493564379904?text=Hola%2C%20estoy%20interesado%20en%20Supremacy%20In%20Heaven%20-%20Afnan">Comprar</a>
+            </div>
+          </div>
+
+          <div class="product-card" data-name="supremacy noir afnan 100 ml">
+            <div class="product-media">
+              <span class="product-tag last-units">Última disponible</span>
+              <img src="Arabes Linea Afnan/Supremacy Noir - Afnan (100 ml).webp" alt="Supremacy Noir - Afnan" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3>Supremacy Noir - Afnan</h3>
+              <p>100 ml</p>
+              <div class="price-container"><span class="price-current">$34.990,00</span></div>
+              <a class="btn-whatsapp" target="_blank" href="https://wa.me/5493564379904?text=Hola%2C%20estoy%20interesado%20en%20Supremacy%20Noir%20-%20Afnan">Comprar</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ==================== ARMAF ==================== -->
+      <div class="category-section" data-category="armaf">
+        <h3 class="category-title">Árabes Línea Armaf</h3>
+        <div class="catalog-grid">
+
+          <div class="product-card" data-name="club de nuit intense men armaf 100 ml">
+            <div class="product-media">
+              <img src="Arabes Línea Armaf/Club de Nuit (Intense Men) - Armaf (100 ml).webp" alt="Club de Nuit (Intense Men) - Armaf" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3>Club de Nuit (Intense Men) - Armaf</h3>
+              <p>100 ml</p>
+              <div class="price-container"><span class="price-current">$34.990,00</span></div>
+              <a class="btn-whatsapp" target="_blank" href="https://wa.me/5493564379904?text=Hola%2C%20estoy%20interesado%20en%20Club%20de%20Nuit%20(Intense%20Men)%20-%20Armaf">Comprar</a>
+            </div>
+          </div>
+
+          <div class="product-card" data-name="club de nuit milestone armaf 100 ml">
+            <div class="product-media">
+              <img src="Arabes Línea Armaf/Club de Nuit (Milestone) - Armaf (100 ml).webp" alt="Club de Nuit (Milestone) - Armaf" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3>Club de Nuit (Milestone) - Armaf</h3>
+              <p>100 ml</p>
+              <div class="price-container"><span class="price-current">$34.990,00</span></div>
+              <a class="btn-whatsapp" target="_blank" href="https://wa.me/5493564379904?text=Hola%2C%20estoy%20interesado%20en%20Club%20de%20Nuit%20(Milestone)%20-%20Armaf">Comprar</a>
+            </div>
+          </div>
+
+          <div class="product-card" data-name="club de nuit sillage armaf 100 ml">
+            <div class="product-media">
+              <img src="Arabes Línea Armaf/Club de Nuit (Sillage) - Armaf (100 ml).webp" alt="Club de Nuit (Sillage) - Armaf" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3>Club de Nuit (Sillage) - Armaf</h3>
+              <p>100 ml</p>
+              <div class="price-container"><span class="price-current">$34.990,00</span></div>
+              <a class="btn-whatsapp" target="_blank" href="https://wa.me/5493564379904?text=Hola%2C%20estoy%20interesado%20en%20Club%20de%20Nuit%20(Sillage)%20-%20Armaf">Comprar</a>
+            </div>
+          </div>
+
+          <div class="product-card" data-name="club de nuit untold armaf 100 ml">
+            <div class="product-media">
+              <img src="Arabes Línea Armaf/Club de Nuit (Untold) - Armaf (100 ml).webp" alt="Club de Nuit (Untold) - Armaf" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3>Club de Nuit (Untold) - Armaf</h3>
+              <p>100 ml</p>
+              <div class="price-container"><span class="price-current">$34.990,00</span></div>
+              <a class="btn-whatsapp" target="_blank" href="https://wa.me/5493564379904?text=Hola%2C%20estoy%20interesado%20en%20Club%20de%20Nuit%20(Untold)%20-%20Armaf">Comprar</a>
+            </div>
+          </div>
+
+          <div class="product-card" data-name="club de nuit women armaf 100 ml">
+            <div class="product-media">
+              <img src="Arabes Línea Armaf/Club de Nuit (Women) - Armaf (100 ml).webp" alt="Club de Nuit (Women) - Armaf" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3>Club de Nuit (Women) - Armaf</h3>
+              <p>100 ml</p>
+              <div class="price-container"><span class="price-current">$29.990,00</span></div>
+              <a class="btn-whatsapp" target="_blank" href="https://wa.me/5493564379904?text=Hola%2C%20estoy%20interesado%20en%20Club%20de%20Nuit%20(Women)%20-%20Armaf">Comprar</a>
+            </div>
+          </div>
+
+          <div class="product-card" data-name="island bliss armaf 100 ml">
+            <div class="product-media">
+              <img src="Arabes Línea Armaf/Island Bliss - Armaf (100 ml).webp" alt="Island Bliss - Armaf" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3>Island Bliss - Armaf</h3>
+              <p>100 ml</p>
+              <div class="price-container"><span class="price-current">$49.990,00</span></div>
+              <a class="btn-whatsapp" target="_blank" href="https://wa.me/5493564379904?text=Hola%2C%20estoy%20interesado%20en%20Island%20Bliss%20-%20Armaf">Comprar</a>
+            </div>
+          </div>
+
+          <div class="product-card" data-name="mandarin sky armaf 100 ml">
+            <div class="product-media">
+              <img src="Arabes Línea Armaf/Mandarin Sky - Armaf (100 ml).webp" alt="Mandarin Sky - Armaf" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3>Mandarin Sky - Armaf</h3>
+              <p>100 ml</p>
+              <div class="price-container"><span class="price-current">$39.990,00</span></div>
+              <a class="btn-whatsapp" target="_blank" href="https://wa.me/5493564379904?text=Hola%2C%20estoy%20interesado%20en%20Mandarin%20Sky%20-%20Armaf">Comprar</a>
+            </div>
+          </div>
+
+          <div class="product-card" data-name="odyssey aqua armaf 100 cc">
+            <div class="product-media">
+              <img src="Arabes Línea Armaf/Odyssey Aqua - Armaf (100 cc).webp" alt="Odyssey Aqua - Armaf" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3>Odyssey Aqua - Armaf</h3>
+              <p>100 cc</p>
+              <div class="price-container"><span class="price-current">$29.990,00</span></div>
+              <a class="btn-whatsapp" target="_blank" href="https://wa.me/5493564379904?text=Hola%2C%20estoy%20interesado%20en%20Odyssey%20Aqua%20-%20Armaf">Comprar</a>
+            </div>
+          </div>
+
+          <div class="product-card" data-name="odyssey candy armaf 100 ml">
+            <div class="product-media">
+              <span class="product-tag out-of-stock">Sin Stock</span>
+              <img src="Arabes Línea Armaf/Odyssey Candy - Armaf (100 ml).webp" alt="Odyssey Candy - Armaf" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3>Odyssey Candy - Armaf</h3>
+              <p>100 ml</p>
+              <div class="price-container"><span class="price-current">Sin Stock</span></div>
+              <button class="btn-whatsapp disabled">Agotado</button>
+            </div>
+          </div>
+
+          <div class="product-card" data-name="odyssey mega armaf 100 ml">
+            <div class="product-media">
+              <img src="Arabes Línea Armaf/Odyssey Mega - Armaf (100 ml).webp" alt="Odyssey Mega - Armaf" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3>Odyssey Mega - Armaf</h3>
+              <p>100 ml</p>
+              <div class="price-container"><span class="price-current">$29.990,00</span></div>
+              <a class="btn-whatsapp" target="_blank" href="https://wa.me/5493564379904?text=Hola%2C%20estoy%20interesado%20en%20Odyssey%20Mega%20-%20Armaf">Comprar</a>
+            </div>
+          </div>
+
+          <div class="product-card" data-name="odyssey spectra armaf 100 ml">
+            <div class="product-media">
+              <img src="Arabes Línea Armaf/Odyssey Spectra - Armaf (100 ml).webp" alt="Odyssey Spectra - Armaf" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3>Odyssey Spectra - Armaf</h3>
+              <p>100 ml</p>
+              <div class="price-container"><span class="price-current">$29.990,00</span></div>
+              <a class="btn-whatsapp" target="_blank" href="https://wa.me/5493564379904?text=Hola%2C%20estoy%20interesado%20en%20Odyssey%20Spectra%20-%20Armaf">Comprar</a>
+            </div>
+          </div>
+
+          <div class="product-card" data-name="odyssey wild one armaf 100 ml">
+            <div class="product-media">
+              <img src="Arabes Línea Armaf/Odyssey Wild One - Armaf (100 ml).webp" alt="Odyssey Wild One - Armaf" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3>Odyssey Wild One - Armaf</h3>
+              <p>100 ml</p>
+              <div class="price-container"><span class="price-current">$29.990,00</span></div>
+              <a class="btn-whatsapp" target="_blank" href="https://wa.me/5493564379904?text=Hola%2C%20estoy%20interesado%20en%20Odyssey%20Wild%20One%20-%20Armaf">Comprar</a>
+            </div>
+          </div>
+
+          <div class="product-card" data-name="yumyum armaf 100 ml">
+            <div class="product-media">
+              <img src="Arabes Línea Armaf/YumYum - Armaf (100 ml).webp" alt="YumYum - Armaf" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3>YumYum - Armaf</h3>
+              <p>100 ml</p>
+              <div class="price-container"><span class="price-current">$49.090,00</span></div>
+              <a class="btn-whatsapp" target="_blank" href="https://wa.me/5493564379904?text=Hola%2C%20estoy%20interesado%20en%20YumYum%20-%20Armaf">Comprar</a>
+            </div>
+          </div>
+
+          <div class="product-card" data-name="mandarin sky elixir armaf 100 ml">
+            <div class="product-media">
+              <img src="Arabes Línea Armaf/Mandarin Sky Elixir - Armaf (100 ml).webp" alt="Mandarin Sky Elixir - Armaf" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3>Mandarin Sky Elixir - Armaf</h3>
+              <p>100 ml</p>
+              <div class="price-container"><span class="price-current">$39.990,00</span></div>
+              <a class="btn-whatsapp" target="_blank" href="https://wa.me/5493564379904?text=Hola%2C%20estoy%20interesado%20en%20Mandarin%20Sky%20Elixir%20-%20Armaf">Comprar</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ==================== LATTAFA ==================== -->
+      <div class="category-section" data-category="lattafa">
+        <h3 class="category-title">Árabes Línea Lattafa</h3>
+        <div class="catalog-grid">
+
+          <div class="product-card" data-name="afeef lattafa 100 ml">
+            <div class="product-media">
+              <img src="Arabes Línea Lattafa/Afeef - Lattafa (100 ml).webp" alt="Afeef - Lattafa" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3>Afeef - Lattafa</h3>
+              <p>100 ml</p>
+              <div class="price-container"><span class="price-current">$45.690,00</span></div>
+              <a class="btn-whatsapp" target="_blank" href="https://wa.me/5493564379904?text=Hola%2C%20estoy%20interesado%20en%20Afeef%20-%20Lattafa">Comprar</a>
+            </div>
+          </div>
+
+          <div class="product-card" data-name="amethyst premium lattafa 100 ml">
+            <div class="product-media">
+              <img src="Arabes Línea Lattafa/Amethyst (Premium) - Lattafa (100 ml).webp" alt="Amethyst (Premium) - Lattafa" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3>Amethyst (Premium) - Lattafa</h3>
+              <p>100 ml</p>
+              <div class="price-container"><span class="price-current">$28.790,00</span></div>
+              <a class="btn-whatsapp" target="_blank" href="https://wa.me/5493564379904?text=Hola%2C%20estoy%20interesado%20en%20Amethyst%20(Premium)%20-%20Lattafa">Comprar</a>
+            </div>
+          </div>
+
+          <div class="product-card" data-name="art of universe lattafa 100 ml">
+            <div class="product-media">
+              <span class="product-tag out-of-stock">Sin Stock</span>
+              <img src="Arabes Línea Lattafa/Art of Universe - Lattafa (100 ml).webp" alt="Art of Universe - Lattafa" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3>Art of Universe - Lattafa</h3>
+              <p>100 ml</p>
+              <div class="price-container"><span class="price-current">Sin Stock</span></div>
+              <button class="btn-whatsapp disabled">Agotado</button>
+            </div>
+          </div>
+
+          <div class="product-card" data-name="asad a eleccion lattafa 100 ml">
+            <div class="product-media">
+              <img src="Arabes Línea Lattafa/Asad (A elección) - Lattafa (100 ml).webp" alt="Asad (A elección) - Lattafa" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3>Asad (A elección) - Lattafa</h3>
+              <p>100 ml</p>
+              <div class="price-container"><span class="price-current">$22.990,00</span></div>
+              <a class="btn-whatsapp" target="_blank" href="https://wa.me/5493564379904?text=Hola%2C%20estoy%20interesado%20en%20Asad%20(A%20elecci%C3%B3n)%20-%20Lattafa">Comprar</a>
+            </div>
+          </div>
+
+          <div class="product-card" data-name="atheri lattafa 100 ml">
+            <div class="product-media">
+              <img src="Arabes Línea Lattafa/Atheri - Lattafa (100 ml).webp" alt="Atheri - Lattafa" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3>Atheri - Lattafa</h3>
+              <p>100 ml</p>
+              <div class="price-container"><span class="price-current">$54.690,00</span></div>
+              <a class="btn-whatsapp" target="_blank" href="https://wa.me/5493564379904?text=Hola%2C%20estoy%20interesado%20en%20Atheri%20-%20Lattafa">Comprar</a>
+            </div>
+          </div>
+
+          <div class="product-card" data-name="eclaire lattafa 100 ml">
+            <div class="product-media">
+              <img src="Arabes Línea Lattafa/Eclaire - Lattafa (100 ml).webp" alt="Eclaire - Lattafa" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3>Eclaire - Lattafa</h3>
+              <p>100 ml</p>
+              <div class="price-container"><span class="price-current">$35.490,00</span></div>
+              <a class="btn-whatsapp" target="_blank" href="https://wa.me/5493564379904?text=Hola%2C%20estoy%20interesado%20en%20Eclaire%20-%20Lattafa">Comprar</a>
+            </div>
+          </div>
+
+          <div class="product-card" data-name="fakhar black lattafa 100 ml">
+            <div class="product-media">
+              <img src="Arabes Línea Lattafa/Fakhar Black - Lattafa (100 ml).webp" alt="Fakhar Black - Lattafa" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3>Fakhar Black - Lattafa</h3>
+              <p>100 ml</p>
+              <div class="price-container"><span class="price-current">$33.590,00</span></div>
+              <a class="btn-whatsapp" target="_blank" href="https://wa.me/5493564379904?text=Hola%2C%20estoy%20interesado%20en%20Fakhar%20Black%20-%20Lattafa">Comprar</a>
+            </div>
+          </div>
+
+          <div class="product-card" data-name="fakhar gold lattafa 100 ml">
+            <div class="product-media">
+              <img src="Arabes Línea Lattafa/Fakhar Gold - Lattafa (100 ml).webp" alt="Fakhar Gold - Lattafa" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3>Fakhar Gold - Lattafa</h3>
+              <p>100 ml</p>
+              <div class="price-container"><span class="price-current">$33.590,00</span></div>
+              <a class="btn-whatsapp" target="_blank" href="https://wa.me/5493564379904?text=Hola%2C%20estoy%20interesado%20en%20Fakhar%20Gold%20-%20Lattafa">Comprar</a>
+            </div>
+          </div>
+
+          <div class="product-card" data-name="fakhar rose lattafa 100 ml">
+            <div class="product-media">
+              <img src="Arabes Línea Lattafa/Fakhar Rose - Lattafa (100 ml).webp" alt="Fakhar Rose - Lattafa" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3>Fakhar Rose - Lattafa</h3>
+              <p>100 ml</p>
+              <div class="price-container"><span class="price-current">$33.590,00</span></div>
+              <a class="btn-whatsapp" target="_blank" href="https://wa.me/5493564379904?text=Hola%2C%20estoy%20interesado%20en%20Fakhar%20Rose%20-%20Lattafa">Comprar</a>
+            </div>
+          </div>
+
+          <div class="product-card" data-name="haya lattafa 100 ml">
+            <div class="product-media">
+              <img src="Arabes Línea Lattafa/Haya - Lattafa (100 ml).webp" alt="Haya - Lattafa" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3>Haya - Lattafa</h3>
+              <p>100 ml</p>
+              <div class="price-container"><span class="price-current">$38.590,00</span></div>
+              <a class="btn-whatsapp" target="_blank" href="https://wa.me/5493564379904?text=Hola%2C%20estoy%20interesado%20en%20Haya%20-%20Lattafa">Comprar</a>
+            </div>
+          </div>
+
+          <div class="product-card" data-name="her confession lattafa 100 ml">
+            <div class="product-media">
+              <img src="Arabes Línea Lattafa/Her Confession - Lattafa (100 ml).webp" alt="Her Confession - Lattafa" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3>Her Confession - Lattafa</h3>
+              <p>100 ml</p>
+              <div class="price-container"><span class="price-current">$39.390,00</span></div>
+              <a class="btn-whatsapp" target="_blank" href="https://wa.me/5493564379904?text=Hola%2C%20estoy%20interesado%20en%20Her%20Confession%20-%20Lattafa">Comprar</a>
+            </div>
+          </div>
+
+          <div class="product-card" data-name="his confession lattafa 100 ml">
+            <div class="product-media">
+              <img src="Arabes Línea Lattafa/His Confession - Lattafa (100 ml).webp" alt="His Confession - Lattafa" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3>His Confession - Lattafa</h3>
+              <p>100 ml</p>
+              <div class="price-container"><span class="price-current">$39.390,00</span></div>
+              <a class="btn-whatsapp" target="_blank" href="https://wa.me/5493564379904?text=Hola%2C%20estoy%20interesado%20en%20His%20Confession%20-%20Lattafa">Comprar</a>
+            </div>
+          </div>
+
+          <div class="product-card" data-name="honor & glory premium lattafa 100 ml">
+            <div class="product-media">
+              <img src="Arabes Línea Lattafa/Honor & Glory (Premium) - Lattafa (100 ml).webp" alt="Honor & Glory (Premium) - Lattafa" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3>Honor & Glory (Premium) - Lattafa</h3>
+              <p>100 ml</p>
+              <div class="price-container"><span class="price-current">$28.790,00</span></div>
+              <a class="btn-whatsapp" target="_blank" href="https://wa.me/5493564379904?text=Hola%2C%20estoy%20interesado%20en%20Honor%20%26%20Glory%20(Premium)%20-%20Lattafa">Comprar</a>
+            </div>
+          </div>
+
+          <div class="product-card" data-name="khamrah negro lattafa 100 ml">
+            <div class="product-media">
+              <span class="product-tag out-of-stock">Sin Stock</span>
+              <img src="Arabes Línea Lattafa/Khamrah (Negro) - Lattafa (100 ml).webp" alt="Khamrah (Negro) - Lattafa" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3>Khamrah (Negro) - Lattafa</h3>
+              <p>100 ml</p>
+              <div class="price-container"><span class="price-current">Sin Stock</span></div>
+              <button class="btn-whatsapp disabled">Agotado</button>
+            </div>
+          </div>
+
+          <div class="product-card" data-name="khamrah dukhan lattafa 100 ml">
+            <div class="product-media">
+              <img src="Arabes Línea Lattafa/Khamrah Dukhan - Lattafa (100 ml).webp" alt="Khamrah Dukhan - Lattafa" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3>Khamrah Dukhan - Lattafa</h3>
+              <p>100 ml</p>
+              <div class="price-container"><span class="price-current">$33.990,00</span></div>
+              <a class="btn-whatsapp" target="_blank" href="https://wa.me/5493564379904?text=Hola%2C%20estoy%20interesado%20en%20Khamrah%20Dukhan%20-%20Lattafa">Comprar</a>
+            </div>
+          </div>
+
+          <div class="product-card" data-name="khamrah qahwa lattafa 100 ml">
+            <div class="product-media">
+              <img src="Arabes Línea Lattafa/Khamrah Qahwa - Lattafa (100 ml).webp" alt="Khamrah Qahwa - Lattafa" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3>Khamrah Qahwa - Lattafa</h3>
+              <p>100 ml</p>
+              <div class="price-container"><span class="price-current">$33.990,00</span></div>
+              <a class="btn-whatsapp" target="_blank" href="https://wa.me/5493564379904?text=Hola%2C%20estoy%20interesado%20en%20Khamrah%20Qahwa%20-%20Lattafa">Comprar</a>
+            </div>
+          </div>
+
+          <div class="product-card" data-name="mayar lattafa 100 ml">
+            <div class="product-media">
+              <span class="product-tag out-of-stock">Sin Stock</span>
+              <img src="Arabes Línea Lattafa/Mayar - Lattafa (100 ml).webp" alt="Mayar - Lattafa" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3>Mayar - Lattafa</h3>
+              <p>100 ml</p>
+              <div class="price-container"><span class="price-current">Sin Stock</span></div>
+              <button class="btn-whatsapp disabled">Agotado</button>
+            </div>
+          </div>
+
+          <div class="product-card" data-name="mayar natural intense lattafa 100 ml">
+            <div class="product-media">
+              <img src="Arabes Línea Lattafa/Mayar Natural Intense - Lattafa (100 ml).webp" alt="Mayar Natural Intense - Lattafa" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3>Mayar Natural Intense - Lattafa</h3>
+              <p>100 ml</p>
+              <div class="price-container"><span class="price-current">$30.390,00</span></div>
+              <a class="btn-whatsapp" target="_blank" href="https://wa.me/5493564379904?text=Hola%2C%20estoy%20interesado%20en%20Mayar%20Natural%20Intense%20-%20Lattafa">Comprar</a>
+            </div>
+          </div>
+
+          <div class="product-card" data-name="musamam lattafa 100 ml">
+            <div class="product-media">
+              <span class="product-tag out-of-stock">Sin Stock</span>
+              <img src="Arabes Línea Lattafa/Musamam - Lattafa (100 ml).webp" alt="Musamam - Lattafa" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3>Musamam - Lattafa</h3>
+              <p>100 ml</p>
+              <div class="price-container"><span class="price-current">Sin Stock</span></div>
+              <button class="btn-whatsapp disabled">Agotado</button>
+            </div>
+          </div>
+
+          <div class="product-card" data-name="noble blush premium lattafa 100 ml">
+            <div class="product-media">
+              <img src="Arabes Línea Lattafa/Noble Blush (Premium) - Lattafa (100 ml).webp" alt="Noble Blush (Premium) - Lattafa" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3>Noble Blush (Premium) - Lattafa</h3>
+              <p>100 ml</p>
+              <div class="price-container"><span class="price-current">$28.790,00</span></div>
+              <a class="btn-whatsapp" target="_blank" href="https://wa.me/5493564379904?text=Hola%2C%20estoy%20interesado%20en%20Noble%20Blush%20(Premium)%20-%20Lattafa">Comprar</a>
+            </div>
+          </div>
+
+          <div class="product-card" data-name="oud for glory premium lattafa 100 ml">
+            <div class="product-media">
+              <img src="Arabes Línea Lattafa/Oud for Glory (Premium) - Lattafa (100 ml).webp" alt="Oud for Glory (Premium) - Lattafa" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3>Oud for Glory (Premium) - Lattafa</h3>
+              <p>100 ml</p>
+              <div class="price-container"><span class="price-current">$28.790,00</span></div>
+              <a class="btn-whatsapp" target="_blank" href="https://wa.me/5493564379904?text=Hola%2C%20estoy%20interesado%20en%20Oud%20for%20Glory%20(Premium)%20-%20Lattafa">Comprar</a>
+            </div>
+          </div>
+
+          <div class="product-card" data-name="qaed al fursan blanco lattafa 100 ml">
+            <div class="product-media">
+              <span class="product-tag out-of-stock">Sin Stock</span>
+              <img src="Arabes Línea Lattafa/Qaed Al Fursan (Blanco) - Lattafa (100 ml).webp" alt="Qaed Al Fursan (Blanco) - Lattafa" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3>Qaed Al Fursan (Blanco) - Lattafa</h3>
+              <p>100 ml</p>
+              <div class="price-container"><span class="price-current">Sin Stock</span></div>
+              <button class="btn-whatsapp disabled">Agotado</button>
+            </div>
+          </div>
+
+          <div class="product-card" data-name="qaed al fursan negro lattafa 100 ml">
+            <div class="product-media">
+              <span class="product-tag out-of-stock">Sin Stock</span>
+              <img src="Arabes Línea Lattafa/Qaed Al Fursan (Negro) - Lattafa (100 ml).webp" alt="Qaed Al Fursan (Negro) - Lattafa" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3>Qaed Al Fursan (Negro) - Lattafa</h3>
+              <p>100 ml</p>
+              <div class="price-container"><span class="price-current">Sin Stock</span></div>
+              <button class="btn-whatsapp disabled">Agotado</button>
+            </div>
+          </div>
+
+          <div class="product-card" data-name="sakeena lattafa 100 cc">
+            <div class="product-media">
+              <img src="Arabes Línea Lattafa/Sakeena - Lattafa (100 cc).webp" alt="Sakeena - Lattafa" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3>Sakeena - Lattafa</h3>
+              <p>100 cc</p>
+              <div class="price-container"><span class="price-current">$38.390,00</span></div>
+              <a class="btn-whatsapp" target="_blank" href="https://wa.me/5493564379904?text=Hola%2C%20estoy%20interesado%20en%20Sakeena%20-%20Lattafa">Comprar</a>
+            </div>
+          </div>
+
+          <div class="product-card" data-name="sublime premium lattafa 100 ml">
+            <div class="product-media">
+              <img src="Arabes Línea Lattafa/Sublime (Premium) - Lattafa (100 ml).webp" alt="Sublime (Premium) - Lattafa" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3>Sublime (Premium) - Lattafa</h3>
+              <p>100 ml</p>
+              <div class="price-container"><span class="price-current">$28.790,00</span></div>
+              <a class="btn-whatsapp" target="_blank" href="https://wa.me/5493564379904?text=Hola%2C%20estoy%20interesado%20en%20Sublime%20(Premium)%20-%20Lattafa">Comprar</a>
+            </div>
+          </div>
+
+          <div class="product-card" data-name="yara a eleccion lattafa 100 ml">
+            <div class="product-media">
+              <img src="Arabes Línea Lattafa/Yara (A elección) - Lattafa (100 ml).webp" alt="Yara (A elección) - Lattafa" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3>Yara (A elección) - Lattafa</h3>
+              <p>100 ml</p>
+              <div class="price-container"><span class="price-current">$22.990,00</span></div>
+              <a class="btn-whatsapp" target="_blank" href="https://wa.me/5493564379904?text=Hola%2C%20estoy%20interesado%20en%20Yara%20(A%20elecci%C3%B3n)%20-%20Lattafa">Comprar</a>
+            </div>
+          </div>
+
+          <div class="product-card" data-name="eclaire pistacho 100 ml">
+            <div class="product-media">
+              <img src="Arabes Línea Lattafa/Eclaire Pistacho - Lattafa (100 ml).webp" alt="Eclaire Pistacho" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3>Eclaire Pistacho</h3>
+              <p>100 ml</p>
+              <div class="price-container"><span class="price-current">$37.490,00</span></div>
+              <a class="btn-whatsapp" target="_blank" href="https://wa.me/5493564379904?text=Hola%2C%20estoy%20interesado%20en%20Eclaire%20Pistacho">Comprar</a>
+            </div>
+          </div>
+
+          <div class="product-card" data-name="victoria lattafa 100 ml">
+            <div class="product-media">
+              <img src="Arabes Línea Lattafa/Victoria Lattafa - (100 ml).webp" alt="Victoria Lattafa" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3>Victoria Lattafa</h3>
+              <p>100 ml</p>
+              <div class="price-container"><span class="price-current">$31.990,00</span></div>
+              <a class="btn-whatsapp" target="_blank" href="https://wa.me/5493564379904?text=Hola%2C%20estoy%20interesado%20en%20Victoria%20Lattafa">Comprar</a>
+            </div>
+          </div>
+
+          <div class="product-card" data-name="yara elixir 100 ml">
+            <div class="product-media">
+              <img src="Arabes Línea Lattafa/Yara Elixir (100 ml).webp" alt="Yara Elixir" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3>Yara Elixir</h3>
+              <p>100 ml</p>
+              <div class="price-container"><span class="price-current">$22.990,00</span></div>
+              <a class="btn-whatsapp" target="_blank" href="https://wa.me/5493564379904?text=Hola%2C%20estoy%20interesado%20en%20Yara%20Elixir">Comprar</a>
+            </div>
+          </div>
+
+          <div class="product-card" data-name="nebras lattafa 100 ml">
+            <div class="product-media">
+              <span class="product-tag out-of-stock">Sin Stock</span>
+              <img src="Arabes Línea Lattafa/Nebras Lattafa - (100 ml).webp" alt="Nebras Lattafa" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3>Nebras Lattafa</h3>
+              <p>100 ml</p>
+              <div class="price-container"><span class="price-current">Sin Stock</span></div>
+              <button class="btn-whatsapp disabled">Agotado</button>
+            </div>
+          </div>
+
+          <div class="product-card" data-name="asad elixir 100 ml">
+            <div class="product-media">
+              <img src="Arabes Línea Lattafa/Asad Elixir (100 ml).webp" alt="Asad Elixir" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3>Asad Elixir</h3>
+              <p>100 ml</p>
+              <div class="price-container"><span class="price-current">$22.990,00</span></div>
+              <a class="btn-whatsapp" target="_blank" href="https://wa.me/5493564379904?text=Hola%2C%20estoy%20interesado%20en%20Asad%20Elixir">Comprar</a>
+            </div>
+          </div>
+
+          <div class="product-card" data-name="emeer lattafa 100 ml">
+            <div class="product-media">
+              <span class="product-tag out-of-stock">Sin Stock</span>
+              <img src="Arabes Línea Lattafa/Emeer - Lattafa (100 ml).webp" alt="Emeer - Lattafa" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3>Emeer - Lattafa</h3>
+              <p>100 ml</p>
+              <div class="price-container"><span class="price-current">Sin Stock</span></div>
+              <button class="btn-whatsapp disabled">Agotado</button>
+            </div>
+          </div>
+
+          <div class="product-card" data-name="habik for women lattafa">
+            <div class="product-media">
+              <span class="product-tag out-of-stock">Sin Stock</span>
+              <img src="Arabes Línea Lattafa/Habik For Women Lattafa (100 ml).webp" alt="Habik For Women Lattafa" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3>Habik For Women Lattafa</h3>
+              <p>100 ml</p>
+              <div class="price-container"><span class="price-current">Sin Stock</span></div>
+              <button class="btn-whatsapp disabled">Agotado</button>
+            </div>
+          </div>
+
+          <div class="product-card" data-name="angham lattafa 100 ml">
+            <div class="product-media">
+              <span class="product-tag out-of-stock">Sin Stock</span>
+              <img src="Arabes Línea Lattafa/Angham Lattafa - (100 ml).webp" alt="Angham Lattafa" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3>Angham Lattafa</h3>
+              <p>100 ml</p>
+              <div class="price-container"><span class="price-current">Sin Stock</span></div>
+              <button class="btn-whatsapp disabled">Agotado</button>
+            </div>
+          </div>
+
+          <div class="product-card" data-name="the kingdom lattafa 100 ml">
+            <div class="product-media">
+              <img src="Arabes Línea Lattafa/The Kingdom - Lattafa (100 ml).webp" alt="The Kingdom - Lattafa" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3>The Kingdom - Lattafa</h3>
+              <p>100 ml</p>
+              <div class="price-container"><span class="price-current">$38.790,00</span></div>
+              <a class="btn-whatsapp" target="_blank" href="https://wa.me/5493564379904?text=Hola%2C%20estoy%20interesado%20en%20The%20Kingdom%20-%20Lattafa">Comprar</a>
+            </div>
+          </div>
+
+          <div class="product-card" data-name="eclaire banoffi lattafa 100 cc">
+            <div class="product-media">
+              <img src="Arabes Línea Lattafa/Eclaire Banoffi - Lattafa (100 cc).webp" alt="Eclaire Banoffi - Lattafa" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3>Eclaire Banoffi - Lattafa</h3>
+              <p>100 cc</p>
+              <div class="price-container"><span class="price-current">$37.390,00</span></div>
+              <a class="btn-whatsapp" target="_blank" href="https://wa.me/5493564379904?text=Hola%2C%20estoy%20interesado%20en%20Eclaire%20Banoffi%20-%20Lattafa">Comprar</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ==================== XERJOFF ==================== -->
+      <div class="category-section" data-category="xerjoff">
+        <h3 class="category-title">Árabes Línea Xerjoff</h3>
+        <div class="catalog-grid">
+
+          <div class="product-card" data-name="accento xerjoff 100 ml">
+            <div class="product-media">
+              <img src="Arabes Línea Xerjoff/Accento - Xerjoff (100 ml).webp" alt="Accento - Xerjoff" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3>Accento - Xerjoff</h3>
+              <p>100 ml</p>
+              <div class="price-container"><span class="price-current">$37.790,00</span></div>
+              <a class="btn-whatsapp" target="_blank" href="https://wa.me/5493564379904?text=Hola%2C%20estoy%20interesado%20en%20Accento%20-%20Xerjoff">Comprar</a>
+            </div>
+          </div>
+
+          <div class="product-card" data-name="coro xerjoff 100 ml">
+            <div class="product-media">
+              <img src="Arabes Línea Xerjoff/Coro - Xerjoff (100 ml).webp" alt="Coro - Xerjoff" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3>Coro - Xerjoff</h3>
+              <p>100 ml</p>
+              <div class="price-container"><span class="price-current">$37.790,00</span></div>
+              <a class="btn-whatsapp" target="_blank" href="https://wa.me/5493564379904?text=Hola%2C%20estoy%20interesado%20en%20Coro%20-%20Xerjoff">Comprar</a>
+            </div>
+          </div>
+
+          <div class="product-card" data-name="erba gold xerjoff 100 ml">
+            <div class="product-media">
+              <img src="Arabes Línea Xerjoff/Erba Gold - Xerjoff (100 ml).webp" alt="Erba Gold - Xerjoff" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3>Erba Gold - Xerjoff</h3>
+              <p>100 ml</p>
+              <div class="price-container"><span class="price-current">$39.990,00</span></div>
+              <a class="btn-whatsapp" target="_blank" href="https://wa.me/5493564379904?text=Hola%2C%20estoy%20interesado%20en%20Erba%20Gold%20-%20Xerjoff">Comprar</a>
+            </div>
+          </div>
+
+          <div class="product-card" data-name="erba pura premium xerjoff 100 ml">
+            <div class="product-media">
+              <img src="Arabes Línea Xerjoff/Erba Pura (Premium) - Xerjoff (100 ml).webp" alt="Erba Pura (Premium) - Xerjoff" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3>Erba Pura (Premium) - Xerjoff</h3>
+              <p>100 ml</p>
+              <div class="price-container"><span class="price-current">$39.990,00</span></div>
+              <a class="btn-whatsapp" target="_blank" href="https://wa.me/5493564379904?text=Hola%2C%20estoy%20interesado%20en%20Erba%20Pura%20(Premium)%20-%20Xerjoff">Comprar</a>
+            </div>
+          </div>
+
+          <div class="product-card" data-name="opera xerjoff 100 ml">
+            <div class="product-media">
+              <img src="Arabes Línea Xerjoff/Opera - Xerjoff (100 ml).webp" alt="Opera - Xerjoff" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3>Opera - Xerjoff</h3>
+              <p>100 ml</p>
+              <div class="price-container"><span class="price-current">$37.790,00</span></div>
+              <a class="btn-whatsapp" target="_blank" href="https://wa.me/5493564379904?text=Hola%2C%20estoy%20interesado%20en%20Opera%20-%20Xerjoff">Comprar</a>
+            </div>
+          </div>
+
+          <div class="product-card" data-name="soprano premium xerjoff 100 ml">
+            <div class="product-media">
+              <span class="product-tag out-of-stock">Sin Stock</span>
+              <img src="Arabes Línea Xerjoff/Soprano (Premium) - Xerjoff (100 ml).webp" alt="Soprano (Premium) - Xerjoff" loading="lazy">
+            </div>
+            <div class="product-body">
+              <h3>Soprano (Premium) - Xerjoff</h3>
+              <p>100 ml</p>
+              <div class="price-container"><span class="price-current">Sin Stock</span></div>
+              <button class="btn-whatsapp disabled">Agotado</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ ENVÍOS Y PAGOS ============ -->
+<section class="shipping" id="envios">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Información Útil</div>
+      <h2>Envíos y <span class="accent">Medios de Pago</span></h2>
+      <p>Comprá de forma segura y recibí tu pedido en la puerta de tu casa.</p>
+    </div>
+    <div class="ship-grid">
+      <div class="info-card">
+        <h3>Envíos a Todo el País</h3>
+        <ul>
+          <li><span class="chip">✦</span> Envíos a domicilio mediante correo oficial o expresos.</li>
+          <li><span class="chip">✦</span> Despachos rápidos y embalaje protegido de alta seguridad.</li>
+          <li><span class="chip">✦</span> Consultá tarifas vigentes para tu localidad por WhatsApp.</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <h3>Medios de Pago</h3>
+        <ul>
+          <li><span class="chip">✦</span> Transferencia bancaria o depósito directo.</li>
+          <li><span class="chip">✦</span> Tarjetas de crédito y débito a través de plataformas seguras.</li>
+          <li><span class="chip">✦</span> Efectivo / Acuerdos especiales para compras presenciales o zonales.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer id="contacto">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo-text">S C Q | P E R F U M E S</div>
+        <p>Tu tienda de confianza en alta perfumería y fragancias importadas exclusivas. Viví la experiencia de un aroma único.</p>
+        <div class="social-row">
+          <a href="https://www.instagram.com/scq.perfumes/?hl=es" target="_blank" class="social-btn" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+          </a>
+          <a href="https://wa.me/5493564379904?text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n" target="_blank" class="social-btn" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#productos">Perfumes</a></li>
+          <li><a href="#envios">Envíos y Pagos</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contacto Directo</h4>
+        <ul>
+          <li><a href="https://wa.me/5493564379904" target="_blank">WhatsApp: +54 9 3564 37-9904</a></li>
+          <li><a href="https://www.instagram.com/scq.perfumes" target="_blank">Instagram: @scq.perfumes</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 S C Q | P E R F U M E S. Todos los derechos reservados.</p>
+      <p>Diseño y Exclusividad</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ FLOATING WHATSAPP ============ -->
+<a href="https://wa.me/5493564379904?text=Hola%2C%20quiero%20consultar%20por%20un%20perfume" target="_blank" class="float-whatsapp" aria-label="WhatsApp Chat">
+  <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.124-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+</a>
+
+<!-- ============ SCRIPTS (Filtros y Búsqueda) ============ -->
+<script>
+  // Menú Responsive Burger
+  const burger = document.getElementById('burger');
+  const navLinks = document.getElementById('navLinks');
+  burger.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+  });
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => navLinks.classList.remove('open'));
+  });
+
+  // Filtrar por Categoría
+  function filterCategory(cat) {
+    document.querySelectorAll('.cat-btn').forEach(btn => btn.classList.remove('active'));
+    event.target.classList.add('active');
+
+    const sections = document.querySelectorAll('.category-section');
+    sections.forEach(sec => {
+      if(cat === 'all' || sec.getAttribute('data-category') === cat) {
+        sec.style.display = 'block';
+      } else {
+        sec.style.display = 'none';
+      }
+    });
+  }
+
+  // Buscador de Perfumes en tiempo real
+  const searchInput = document.getElementById('searchInput');
+  searchInput.addEventListener('input', (e) => {
+    const term = e.target.value.toLowerCase().trim();
+    const cards = document.querySelectorAll('.product-card');
+    
+    cards.forEach(card => {
+      const name = card.getAttribute('data-name');
+      if(name.includes(term)) {
+        card.style.display = 'flex';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+
+    // Ocultar títulos de categoría si no hay elementos visibles en ella
+    document.querySelectorAll('.category-section').forEach(sec => {
+      let hasVisible = false;
+      sec.querySelectorAll('.product-card').forEach(c => {
+        if(c.style.display !== 'none') hasVisible = true;
+      });
+      sec.style.display = hasVisible ? 'block' : 'none';
+    });
+  });
+</script>
+</body>
+</html>
